@@ -1,4 +1,7 @@
 import pygame
+from flappy import Flappy
+from bakke import Bakke
+from bakgrunn import Bakgrunn
 
 # 1. Oppsett
 pygame.init()
@@ -36,7 +39,6 @@ while True:
 
     # Tegn (print)
     vindu.fill("white")
-
     bakgrunn.tegn()
     bakke.tegn()
     flappy.tegn()
