@@ -1,7 +1,7 @@
 import pygame
 from flappy import Flappy
 from bakke import Bakke
-from bakgrunn import Bakgrunn
+from bakgrunn
 
 # 1. Oppsett
 pygame.init()

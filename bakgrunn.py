@@ -1,8 +1,9 @@
-class Bakgrunn:
-    def __init__(self, x, y):
+import pygame
+from figur import Figur
+
+class Bakgrunn(Figur):
+    def __init__(self, x: int, y:int) -> None:
+        super().__init__("bilder/bakgrunn1.jpg")
         self.x = x
         self.y = y
-        self.image = pygame.image.load("bilder/bakgrunn1.jpg").convert_alpha()
-
-    def tegn(self):
-        vindu.blit(self.image, (self.x, self.y))
+    

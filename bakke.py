@@ -1,3 +1,4 @@
+import pygame
 
 class Bakke:
     def __init__(self, x, y):

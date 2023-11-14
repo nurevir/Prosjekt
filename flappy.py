@@ -1,13 +1,14 @@
 import pygame
+from figur import Figur
 
-class Flappy:
-    def __init__(self, x, y):
+class Flappy(Figur): 
+    def __init__(self,x: int, y:int) -> None:
+        super().__init__("bilder/flappy.jpg")
+        #  self.image = pygame.transform.scale(self.image, (90, 55))
         self.x = x
         self.y = y
         self.y_fart = 0
         self.gravitasjon = 0.1
-        self.image = pygame.image.load("bilder/flappy.jpg").convert_alpha()
-        self.image = pygame.transform.scale(self.image, (90, 55))
 
     def fly(self):
         taster = pygame.key.get_pressed()
@@ -21,5 +22,5 @@ class Flappy:
             self.y_fart += self.gravitasjon
             self.y += self.y_fart
 
-    def tegn(self):
+    def tegn(self, vindu):
         vindu.blit(self.image, (self.x, self.y))
