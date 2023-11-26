@@ -15,6 +15,7 @@ class Pipe(Figur):
         self.ramme.x += self.fart
         if self.ramme.x < 0:  
             self.ramme.x = 600 
+    
 
     def tegn(self, vindu):
         vindu.blit(self.bilde, self.ramme)
