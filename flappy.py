@@ -16,7 +16,7 @@ class Flappy(Figur):
         taster = pygame.key.get_pressed()
         if taster[pygame.K_SPACE]:
             print("pil opp")
-            self.y_fart = -2
+            self.y_fart = -3
             self.ramme.y -= 3
         if self.ramme.y > 370:
             self.y_fart = 0
@@ -24,9 +24,7 @@ class Flappy(Figur):
             self.y_fart += self.gravitasjon
             self.ramme.y += self.y_fart
 
-    def reset(self):
-        self.x = 190
-        self.y = 200
+    
      
     def tegn(self, vindu):
         vindu.blit(self.bilde, self.ramme)
