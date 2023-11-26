@@ -2,7 +2,7 @@ import pygame
 from figur import Figur
 
 class SluttMeny(Figur):
-    def __init__(self, vindu, BREDDE, HOYDE) -> None:
+    def __init__(self, vindu: int, BREDDE:int, HOYDE:int) -> None:
         self.stor_font = pygame.font.SysFont("Arial", 50)
         self.mellom_font = pygame.font.SysFont("Arial", 30)
         self.liten_font = pygame.font.SysFont("Arial", 20)
@@ -11,7 +11,7 @@ class SluttMeny(Figur):
         self.HOYDE = HOYDE
         self.poeng = 0
 
-    def meny2(self):
+    def meny2(self)
         tekst = self.stor_font.render("Game Over", True, ("Red"))
         self.vindu.blit(tekst, (self.BREDDE // 2 - tekst.get_width() // 2, 180))
         tekst_poeng = self.mellom_font.render(f"Poeng: {self.poeng}", True, ("White"))

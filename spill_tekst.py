@@ -2,7 +2,7 @@ import pygame
 from figur import Figur
 
 class SpillTekst(Figur):
-    def __init__(self, vindu, BREDDE, HOYDE) -> None:
+    def __init__(self, vindu: int, BREDDE:int, HOYDE:int) -> None:
         self.mellom_font = pygame.font.SysFont("Arial", 30)
         self.vindu = vindu
         self.BREDDE = BREDDE

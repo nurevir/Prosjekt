@@ -2,7 +2,7 @@ import pygame
 from figur import Figur
 
 class Pipe(Figur):
-    def __init__(self, image_path, x, y):
+    def __init__(self, image_path: str, x:int, y:int):
         super().__init__(image_path)
         self.fart = -2
         self.ramme = self.bilde.get_rect(topleft=(x, y))
