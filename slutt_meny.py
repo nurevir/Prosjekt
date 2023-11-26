@@ -11,7 +11,7 @@ class SluttMeny(Figur):
         self.HOYDE = HOYDE
         self.poeng = 0
 
-    def meny2(self)
+    def meny2(self):
         tekst = self.stor_font.render("Game Over", True, ("Red"))
         self.vindu.blit(tekst, (self.BREDDE // 2 - tekst.get_width() // 2, 180))
         tekst_poeng = self.mellom_font.render(f"Poeng: {self.poeng}", True, ("White"))
