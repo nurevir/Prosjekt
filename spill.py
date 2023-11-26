@@ -3,6 +3,9 @@ from flappy import Flappy
 from bakke import Bakke
 from bakgrunn import Bakgrunn
 from pipe import Pipe
+from start_meny import StartMeny
+from slutt_meny import SluttMeny
+from spill_tekst import SpillTekst
 
 pygame.init()
 
@@ -12,16 +15,14 @@ FPS = 60
 vindu = pygame.display.set_mode((BREDDE, HOYDE))
 klokke = pygame.time.Clock()
 
-overskrift = pygame.font.SysFont("Arial", 50)
-stor_font = pygame.font.SysFont("Arial", 50)
-mellom_font = pygame.font.SysFont("Arial", 30)
-liten_font = pygame.font.SysFont("Arial", 20)
-
 poeng = 0
 
 flappy = Flappy("bilder/flappy.jpg", 190, 200)
 bakgrunn = Bakgrunn("bilder/bakgrunn1.jpg", 0, 0)
 bakke = Bakke("bilder/bakke.jpg", 0, 420)
+start_meny = StartMeny(vindu, BREDDE, HOYDE)
+slutt_meny = SluttMeny(vindu, BREDDE, HOYDE)
+spill_tekst = SpillTekst(vindu, BREDDE, HOYDE)
 
 pipes = [
     Pipe("bilder/pipe1.png", 50, 320),
@@ -58,10 +59,7 @@ while True:
         bakke.beveg()
         bakke.tegn(vindu)
 
-        tekst_start = mellom_font.render("Trykk SPACE for å starte", True, ("White"))
-        vindu.blit(tekst_start, (BREDDE // 2 - tekst_start.get_width() // 2, HOYDE // 2 - tekst_start.get_height() // 2))
-        tekst_flappy = overskrift.render("Flappy bird", True, ("White"))
-        vindu.blit(tekst_flappy, (20, 20))
+        start_meny.meny1()
 
     elif game_mode == GAME_ACTIVE:
         for pipe in pipes:
@@ -70,7 +68,8 @@ while True:
             if pipe.ramme < flappy.ramme:
                 pipe.passert = True
                 if game_mode != GAME_OVER:
-                    poeng += 1
+                    spill_tekst.poeng += 1
+                    slutt_meny.poeng += 1
                     print(f"Score: {poeng}")
 
         bakgrunn.tegn(vindu)
@@ -84,26 +83,21 @@ while True:
             pipe.beveg()
             pipe.tegn(vindu)
 
-        tekst_poeng = mellom_font.render(f"Poeng: {poeng}", True, (255, 255, 255))
-        vindu.blit(tekst_poeng, (20, 60))
+        spill_tekst.meny3()
 
     elif game_mode == GAME_OVER:
         bakgrunn.tegn(vindu)
         bakke.beveg()
         bakke.tegn(vindu)
-
-        tekst = stor_font.render("Game Over", True, ("Red"))
-        vindu.blit(tekst, (BREDDE // 2 - tekst.get_width() // 2, 180))
-        tekst_poeng = mellom_font.render(f"Poeng: {poeng}", True, ("White"))
-        vindu.blit(tekst_poeng, ((BREDDE // 2 - tekst_poeng.get_width() // 2, 240)))
-        tekst_start_på_nytt = liten_font.render("Trykk SPACE for å spille igjen", True, ("White"))
-        vindu.blit(tekst_start_på_nytt, ((BREDDE // 2 - tekst_start_på_nytt.get_width() // 2, 280)))
-
+        
+        slutt_meny.meny2()
+        
         # Check for space bar press to restart the game
         keys = pygame.key.get_pressed()
         if keys[pygame.K_SPACE]:
             game_mode = GAME_ACTIVE
-            poeng = 0
+            spill_tekst.poeng = 0
+            slutt_meny.poeng = 0
 
         # Reset pipes to initial positions
             pipes = [

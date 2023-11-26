@@ -1,7 +1,6 @@
 import pygame
 from figur import Figur
 
-
 class Pipe(Figur):
     def __init__(self, image_path, x, y):
         super().__init__(image_path)

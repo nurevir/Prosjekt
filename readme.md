@@ -1,7 +1,6 @@
 # Spill prosjekt
 
 Todo:
-
 - skisse
 - klasser
 - bevegelser
