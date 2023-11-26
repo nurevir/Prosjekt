@@ -6,7 +6,7 @@ class Flappy(Figur):
         super().__init__("bilder/flappy.jpg")
         self.y_fart = 0
         self.gravitasjon = 0.3
-        self.bilde = pygame.transform.scale(self.bilde, (65, 40))
+        self.bilde = pygame.transform.scale(self.bilde, (75, 50))
         self.ramme = self.bilde.get_rect(topleft=(x, y), width=50, height=25)
         self.ramme.x = x
         self.ramme.y = y
@@ -23,7 +23,11 @@ class Flappy(Figur):
         else:
             self.y_fart += self.gravitasjon
             self.ramme.y += self.y_fart
-    
+
+    def reset(self):
+        self.x = 190
+        self.y = 200
+     
     def tegn(self, vindu):
         vindu.blit(self.bilde, self.ramme)
 
